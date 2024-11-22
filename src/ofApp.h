@@ -2,10 +2,16 @@
 
 #include "ofMain.h"
 #include "TP.h"
+#include "Scheduler.h"
+#include "moodeng.h"
+
 
 class ofApp : public ofBaseApp{
 
 	public:
+		moodeng moo;
+		Scheduler m_timer;
+
 		void setup();
 		void update();
 		void draw();
