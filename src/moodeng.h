@@ -25,6 +25,7 @@ public:
     int m_thirst;
 
     moodeng();
+
     void nextPicture();
     void addHappy();
     void addFood();

@@ -18,9 +18,6 @@ moodeng::moodeng() {
     m_happiness = 100;
     m_thirst = 100;
     m_hunger = 100;
-
-
-
 }
 
 void moodeng::addHappy() {
@@ -35,10 +32,13 @@ void moodeng::addWater() {
 
 }
 
+//draws the immage
 void moodeng::draw() {
+    ofSetColor(ofColor::white);
     m_currMoo[m_currIndex]->draw(0.0f, 0.0f);
 }
 
+//loops throught the photos
 void moodeng::nextPicture() {
     if (m_currIndex == 0) {
         m_currIndex++;
