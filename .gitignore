@@ -361,3 +361,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# OpenFrameworks files
+/apps/myApps/*
+!apps/myApps/yourProjectName/
+/addons/*
+/libs/*
+/build/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build files
+bin/data/*
+bin/libs/*
+*.o
+*.a
+*.so
+*.exe
+*.log
+*.app
+*.dSYM/
