@@ -374,7 +374,6 @@ FodyWeavers.xsd
 Thumbs.db
 
 # Build files
-bin/data/*
 bin/libs/*
 *.o
 *.a
