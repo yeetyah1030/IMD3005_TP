@@ -1,10 +1,21 @@
 #pragma once
 
 #include "ofMain.h"
+#include "TP.h"
+#include "Scheduler.h"
+#include "moodeng.h"
+#include "Level.h"
+
 
 class ofApp : public ofBaseApp{
 
 	public:
+		moodeng m_moo;
+		Scheduler m_timer;
+		Level m_happiness;
+		Level m_hunger;
+		Level m_thirst;
+
 		void setup();
 		void update();
 		void draw();

@@ -376,6 +376,7 @@ Thumbs.db
 # test
 # Build files
 bin/libs/*
+bin/data/
 *.o
 *.a
 *.so
