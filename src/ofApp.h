@@ -16,6 +16,8 @@ class ofApp : public ofBaseApp{
 		Level m_hunger;
 		Level m_thirst;
 
+		ofImage m_background;
+
 		void setup();
 		void update();
 		void draw();

@@ -19,6 +19,7 @@ void Scheduler::threadedFunction() {
         // Do your thing here. It will run once per second.
         //object->setLocation();
         if (m_moodeng != NULL) {
+
             //change location and change colour
             m_moodeng->nextPicture();
         }
