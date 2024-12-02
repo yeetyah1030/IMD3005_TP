@@ -1,10 +1,9 @@
 #include "ofApp.h"
 
-string debugMessage;
-
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup() {
 
+    // serial comms setup
     ofLogToConsole(); // ensure logs go to console
     ofSetLogLevel(OF_LOG_VERBOSE);
 
@@ -24,16 +23,23 @@ void ofApp::setup(){
         ofLog() << "FAILED to open serial port!";
     }
 
+
     // moodeng setup
     m_timer.setMoo(&m_moo);
 
     m_happiness.setDecrease(0.1f);
     m_hunger.setDecrease(0.2f);
     m_thirst.setDecrease(0.05f);
+    m_background.load(TP::BACKGROUND_PATH);
+
+    m_moo.m_happiness = &m_happiness;
+    m_moo.m_thirst = &m_thirst;
+    m_moo.m_hunger = &m_hunger;
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
+
     // reading serial port messages
     if (serial.isInitialized()) {
         // # of bytes the serial has available for reading
@@ -75,37 +81,49 @@ void ofApp::update() {
 
         if (message == "water") {
             ofLog() << "Updating hydration levels...";
-            // function here
+            m_moo.addWater();
         }
-        else if (message == "food") {
+        if (message == "food") {
             ofLog() << "Updating hunger levels...";
-            // function here
+            m_moo.addFood();
+        }
+        else if (message == "happiness") {
+            ofLog() << "Updating happiness levels...";
+            m_moo.addHappy();
         }
     }
 
     // clear messages after processing
     receivedSerialMessages.clear();
 
-    // update game states
-    m_happiness.decrease();
-    m_thirst.decrease();
-    m_hunger.decrease();
+    // updating moodeng states
+    if (m_moo.m_startDecrease == true) {
+        m_happiness.decrease();
+        m_thirst.decrease();
+        m_hunger.decrease();
+        m_moo.checkLevels();
+    }
 }
 
-
-
-
 //--------------------------------------------------------------
-void ofApp::draw(){
-
-    // drawing moodeng game states
+void ofApp::draw() {
+    ofSetColor(ofColor::white);
+    m_background.draw(0.0f, 0.0f, ofGetWindowWidth(), ofGetWindowHeight());
     m_moo.draw();
-    m_happiness.draw(0);
-    m_hunger.draw(150);
-    m_thirst.draw(300);
+    m_happiness.draw(10.0f);
+    m_hunger.draw(ofGetWindowWidth() / 2.0f - ofGetWindowWidth() / 8.0f);
+    m_thirst.draw(ofGetWindowWidth() - ofGetWindowWidth() / 4.0f - 10.0f);
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-
+void ofApp::keyPressed(int key) {
+    if (key == 32) {
+        m_moo.addFood();
+    }
+    if (key == 3682) {
+        m_moo.addHappy();
+    }
+    if (key == 3680) {
+        m_moo.addWater();
+    }
 }

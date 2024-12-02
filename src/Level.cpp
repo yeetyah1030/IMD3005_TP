@@ -28,7 +28,7 @@ void Level::increase() {
 
 void Level::draw(int x) {
     ofSetColor(ofColor::black);
-    ofDrawRectangle(0.0f +x, 0.0f, 110.0f, 30.0f);
+    ofDrawRectangle(x, 10.0f , ofGetWindowWidth()/4.0f, 25.0f);
 
     if (m_level > 60.0f) {
         ofSetColor(ofColor::green);
@@ -40,5 +40,7 @@ void Level::draw(int x) {
         ofSetColor(ofColor::red);
     }
 
-    ofDrawRectangle(5.0f +x, 5.0f, m_level, 20.0f);
+    float scaleValue = (ofGetWindowWidth() / 4.0 - 10.0f) / 100.0f;
+
+    ofDrawRectangle(x + 5.0f, 15.0f, m_level * scaleValue, 15.0f);
 }
