@@ -1,6 +1,4 @@
 #pragma once
-<<<<<<< Updated upstream
-=======
 #include "ofMain.h"
 
 namespace TP {
@@ -27,11 +25,9 @@ namespace TP {
     static const std::string HAPPY2_PATH = "happy/happy2.png";
 
 
-
     static const std::string WATERMELON_UID = "DC AD 84 33";
     static const std::string WATER_UID = "EC D1 7C 32";
 
     static const int PHOTO_WIDTH = 320;
     static const int PHOTO_HEIGHT = 240;
 }
->>>>>>> Stashed changes
