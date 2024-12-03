@@ -35,6 +35,8 @@ void ofApp::setup() {
     m_moo.m_happiness = &m_happiness;
     m_moo.m_thirst = &m_thirst;
     m_moo.m_hunger = &m_hunger;
+
+    m_font.load("font.ttf", 25);
 }
 
 //--------------------------------------------------------------
@@ -101,6 +103,9 @@ void ofApp::update() {
         m_happiness.decrease();
         m_thirst.decrease();
         m_hunger.decrease();
+        if (m_moo.m_tookPoop == true) {
+            m_happiness.decrease();
+        }
         m_moo.checkLevels();
     }
 }
@@ -113,6 +118,11 @@ void ofApp::draw() {
     m_happiness.draw(10.0f);
     m_hunger.draw(ofGetWindowWidth() / 2.0f - ofGetWindowWidth() / 8.0f);
     m_thirst.draw(ofGetWindowWidth() - ofGetWindowWidth() / 4.0f - 10.0f);
+    ofSetColor(ofColor::black);
+    
+    m_font.drawString("Happiness", 20.0f, 35.0f);
+    m_font.drawString("Hunger", ofGetWindowWidth()/2.0f - ofGetWindowWidth() / 8.0f, 35.0f);
+    m_font.drawString("Thirst", ofGetWindowWidth()- ofGetWindowWidth()/4.0f - 10.0f, 35.0f);
 }
 
 //--------------------------------------------------------------
@@ -125,5 +135,8 @@ void ofApp::keyPressed(int key) {
     }
     if (key == 3680) {
         m_moo.addWater();
+    }
+    if (key == 44) {
+        m_moo.cleanPoop();
     }
 }

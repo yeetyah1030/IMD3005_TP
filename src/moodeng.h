@@ -18,10 +18,9 @@ public:
     ofImage m_drink2;
     ofImage m_eat1;
     ofImage m_eat2;
-    ofImage m_melon;
-    ofImage m_water;
     ofImage m_happy1;
     ofImage m_happy2;
+    ofImage m_poop;
 
     ofImage* m_sleeping[2] = { &m_sleep1,&m_sleep2};
     ofImage* m_resting[2] = { &m_rest1, &m_rest2 };
@@ -36,6 +35,8 @@ public:
     bool m_startDecrease;
     bool m_wakingUp;
     bool m_inAction;
+    bool m_tookPoop;
+    int m_poopSize;
 
     ofImage** m_currMoo;
     int m_currIndex;
@@ -50,6 +51,7 @@ public:
     void addHappy();
     void addFood();
     void addWater();
+    void cleanPoop();
     void checkLevels();
     void draw();
 };

@@ -19,10 +19,9 @@ namespace TP {
     static const std::string EATING2_PATH = "eating/eating2.png";
     static const std::string DRINKNG1_PATH = "drinking/drinking1.png";
     static const std::string DRINKING2_PATH = "drinking/drinking2.png";
-    static const std::string WATER_PATH = "drinking/waterBowl.png";
-    static const std::string MELON_PATH = "eating/melon.png";
     static const std::string HAPPY1_PATH = "happy/happy1.png";
     static const std::string HAPPY2_PATH = "happy/happy2.png";
+    static const std::string POOP_PATH = "poop.png";
 
 
     static const std::string WATERMELON_UID = "DC AD 84 33";

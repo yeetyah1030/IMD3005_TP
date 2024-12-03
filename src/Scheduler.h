@@ -9,6 +9,7 @@ public:
 	Scheduler();
 	~Scheduler();
 
+	int m_poopCounter;
 	moodeng* m_moodeng;
 
 	void setMoo(moodeng* moo);

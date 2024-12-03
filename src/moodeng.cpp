@@ -15,10 +15,9 @@ moodeng::moodeng() {
     m_drink2.load(TP::DRINKING2_PATH);
     m_eat1.load(TP::EATING1_PATH);
     m_eat2.load(TP::EATING2_PATH);
-    m_melon.load(TP::MELON_PATH);
-    m_water.load(TP::WATER_PATH);
     m_happy1.load(TP::HAPPY1_PATH);
     m_happy2.load(TP::HAPPY2_PATH);
+    m_poop.load(TP::POOP_PATH);
 
     //currently printing which images
     m_currMoo = m_sleeping;
@@ -26,6 +25,8 @@ moodeng::moodeng() {
     m_counter = 0;
     m_wakingUp = true;
     m_inAction = false;
+    m_tookPoop = false;
+    m_poopSize = 10;
 
     m_happiness = NULL;
     m_thirst = NULL;
@@ -74,6 +75,11 @@ void moodeng::draw() {
     ofSetColor(ofColor::white);
     m_currMoo[m_currIndex]->draw(ofGetWindowWidth()/2.0f - ofGetWindowWidth() / 4.0f, ofGetWindowHeight() / 2 - ofGetWindowWidth() / 4.0f, ofGetWindowWidth()/2.0f, ofGetWindowWidth()/2.0f);
 
+    if (m_tookPoop == true) {
+        ofSetRectMode(OF_RECTMODE_CENTER);
+        m_poop.draw(ofGetWindowWidth() - ofGetWindowWidth() / 5.0f, ofGetWindowHeight() - ofGetWindowHeight() / 4.0f, ofGetWindowWidth() / m_poopSize, ofGetWindowWidth() / m_poopSize);
+    }
+    ofSetRectMode(OF_RECTMODE_CORNER);
 }
 
 //loops throught the photos
@@ -109,12 +115,18 @@ void moodeng::nextPicture() {
 
 void moodeng::checkLevels() {
     if (m_happiness != NULL) {
-        if (m_happiness->m_level == 0.0f || m_thirst->m_level == 0.0f || m_hunger->m_level == 0.0f) {
+        if (m_happiness->m_level == 0.0f || m_thirst->m_level == 0.0f || m_hunger->m_level == 0.0f||m_poopSize==1) {
             m_currMoo = m_dying;
             m_startDecrease = false;
         }
-        else if (m_happiness->m_level < 20.0f || m_thirst->m_level < 20.0f || m_hunger->m_level < 20.0f) {
+        else if (m_happiness->m_level < 40.0f || m_thirst->m_level < 40.0f || m_hunger->m_level < 40.0f||m_poopSize<3) {
             m_currMoo = m_biting;
         }
+    }
+}
+
+void moodeng:: cleanPoop() {
+    if (m_inAction == false) {
+        m_tookPoop = false; 
     }
 }

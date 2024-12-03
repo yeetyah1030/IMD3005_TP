@@ -31,6 +31,8 @@ class ofApp : public ofBaseApp{
 		Level m_hunger;
 		Level m_thirst;
 
+		ofTrueTypeFont m_font; 
+
 		ofImage m_background;
 
 		void setup();
