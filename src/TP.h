@@ -13,7 +13,7 @@ namespace TP {
     static const std::string SLEEPING1_PATH = "sleeping/sleeping1Big.png";
     static const std::string SLEEPING2_PATH = "sleeping/sleeping2Big.png";
     static const std::string SLEEPING3_PATH = "sleeping/sleeping3Big.png";
-    static const std::string BACKGROUND_PATH = "hippoTank.png";
+    static const std::string BACKGROUND_PATH = "backgroundArt.png";
     static const std::string DEAD_PATH = "dead/deadBig.png";
     static const std::string EATING1_PATH = "eating/eating1.png";
     static const std::string EATING2_PATH = "eating/eating2.png";
@@ -23,7 +23,6 @@ namespace TP {
     static const std::string MELON_PATH = "eating/melon.png";
     static const std::string HAPPY1_PATH = "happy/happy1.png";
     static const std::string HAPPY2_PATH = "happy/happy2.png";
-
 
 
     static const std::string WATERMELON_UID = "DC AD 84 33";
