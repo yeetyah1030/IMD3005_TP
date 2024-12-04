@@ -21,6 +21,7 @@ public:
     ofImage m_happy1;
     ofImage m_happy2;
     ofImage m_poop;
+    ofImage m_deathScene;
 
     ofImage* m_sleeping[2] = { &m_sleep1,&m_sleep2};
     ofImage* m_resting[2] = { &m_rest1, &m_rest2 };
@@ -31,12 +32,22 @@ public:
     ofImage* m_drinking[2] = { &m_drink1, &m_drink2 };
     ofImage* m_happy[2] = { &m_happy1, &m_happy2 };
 
+
+    ofSoundPlayer m_eatSound;
+    ofSoundPlayer m_drinkSound;
+    ofSoundPlayer m_blanketSound;
+    ofSoundPlayer m_poopSound;
+    ofSoundPlayer m_deathSound;
+    ofSoundPlayer m_bitingSound;
+
     int m_counter;
     bool m_startDecrease;
     bool m_wakingUp;
     bool m_inAction;
     bool m_tookPoop;
     int m_poopSize;
+    bool m_firstBite;
+    bool m_showDeath;
 
     ofImage** m_currMoo;
     int m_currIndex;
