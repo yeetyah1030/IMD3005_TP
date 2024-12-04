@@ -22,6 +22,14 @@ namespace TP {
     static const std::string HAPPY1_PATH = "happy/happy1.png";
     static const std::string HAPPY2_PATH = "happy/happy2.png";
     static const std::string POOP_PATH = "poop.png";
+    static const std::string DEATH_SCENE_PATH = "deathTitle.png";
+
+    static const std::string EAT_SOUND_PATH = "sounds/eating.mp3";
+    static const std::string DRINK_SOUND_PATH = "sounds/drinking.mp3";
+    static const std::string BLANKET_SOUND_PATH = "sounds/blanket.mp3";
+    static const std::string POOP_SOUND_PATH = "sounds/fart.mp3";
+    static const std::string DEATH_SOUND_PATH = "sounds/death.mp3";
+    static const std::string BITE_SOUND_PATH = "sounds/biting.wav";
 
 
     static const std::string WATERMELON_UID = "DC AD 84 33";

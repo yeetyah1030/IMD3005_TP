@@ -36,6 +36,7 @@ void Scheduler::threadedFunction() {
                     m_moodeng->m_poopSize = 10;
                 }
             m_moodeng->m_tookPoop = true;
+            m_moodeng->m_poopSound.play();
             }
         }
         

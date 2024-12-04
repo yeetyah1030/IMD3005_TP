@@ -18,6 +18,7 @@ moodeng::moodeng() {
     m_happy1.load(TP::HAPPY1_PATH);
     m_happy2.load(TP::HAPPY2_PATH);
     m_poop.load(TP::POOP_PATH);
+    m_deathScene.load(TP::DEATH_SCENE_PATH);
 
     //currently printing which images
     m_currMoo = m_sleeping;
@@ -27,11 +28,20 @@ moodeng::moodeng() {
     m_inAction = false;
     m_tookPoop = false;
     m_poopSize = 10;
+    m_firstBite = true;
+    m_showDeath = false;
 
     m_happiness = NULL;
     m_thirst = NULL;
     m_hunger = NULL;
     m_startDecrease = false;
+
+    m_poopSound.load(TP::POOP_SOUND_PATH);
+    m_eatSound.load(TP::EAT_SOUND_PATH);
+    m_drinkSound.load(TP::DRINK_SOUND_PATH);
+    m_blanketSound.load(TP::BLANKET_SOUND_PATH);
+    m_deathSound.load(TP::DEATH_SOUND_PATH);
+    m_bitingSound.load(TP::BITE_SOUND_PATH);
 }
 
 void moodeng::addHappy() {
@@ -42,6 +52,7 @@ void moodeng::addHappy() {
             m_currMoo = m_happy;
             m_happiness->increase();
             m_counter = 0;
+            m_blanketSound.play();
         }
     }
 }
@@ -54,6 +65,7 @@ void moodeng::addFood() {
             m_currMoo = m_eating;
             m_hunger->increase();
             m_counter = 0;
+            m_eatSound.play();
         }
     }
 }
@@ -66,6 +78,7 @@ void moodeng::addWater() {
             m_currMoo = m_drinking;
             m_hunger->increase();
             m_counter = 0;
+            m_drinkSound.play();
         }
     }
 }
@@ -79,6 +92,12 @@ void moodeng::draw() {
         ofSetRectMode(OF_RECTMODE_CENTER);
         m_poop.draw(ofGetWindowWidth() - ofGetWindowWidth() / 5.0f, ofGetWindowHeight() - ofGetWindowHeight() / 4.0f, ofGetWindowWidth() / m_poopSize, ofGetWindowWidth() / m_poopSize);
     }
+
+    if (m_showDeath == true) {
+        ofSetRectMode(OF_RECTMODE_CENTER);
+        m_deathScene.draw(ofGetWindowWidth() / 2.0f, ofGetWindowHeight() / 2.0f, ofGetWindowWidth() - 100.0f, ofGetWindowHeight() - 500.0f);
+    }
+
     ofSetRectMode(OF_RECTMODE_CORNER);
 }
 
@@ -101,6 +120,7 @@ void moodeng::nextPicture() {
             m_startDecrease = true;
             m_currMoo = m_resting;
             m_inAction = false;
+            m_firstBite = true;
         }
     }
 
@@ -117,10 +137,17 @@ void moodeng::checkLevels() {
     if (m_happiness != NULL) {
         if (m_happiness->m_level == 0.0f || m_thirst->m_level == 0.0f || m_hunger->m_level == 0.0f||m_poopSize==1) {
             m_currMoo = m_dying;
+            m_deathSound.play();
+            m_showDeath = true;
             m_startDecrease = false;
         }
         else if (m_happiness->m_level < 40.0f || m_thirst->m_level < 40.0f || m_hunger->m_level < 40.0f||m_poopSize<3) {
             m_currMoo = m_biting;
+            if (m_firstBite == true) {
+                m_bitingSound.play();
+                m_counter = 0;
+                m_firstBite = false;
+            }
         }
     }
 }
