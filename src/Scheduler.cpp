@@ -23,7 +23,8 @@ void Scheduler::threadedFunction() {
 
             //change location and change colour
             m_moodeng->nextPicture();
-            m_poopCounter++;
+            
+            /*m_poopCounter++;
 
             if (m_poopCounter % 30 == 0) {
                 if (m_moodeng->m_tookPoop == true) {
@@ -37,7 +38,7 @@ void Scheduler::threadedFunction() {
                 }
             m_moodeng->m_tookPoop = true;
             m_moodeng->m_poopSound.play();
-            }
+            }*/
         }
         
     }

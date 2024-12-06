@@ -76,7 +76,7 @@ void moodeng::addWater() {
             m_startDecrease = false;
             m_inAction = true;
             m_currMoo = m_drinking;
-            m_hunger->increase();
+            m_thirst->increase();
             m_counter = 0;
             m_drinkSound.play();
         }
