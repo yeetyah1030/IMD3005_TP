@@ -13,7 +13,7 @@ class ofApp : public ofBaseApp{
 		// serial port stuff
 		ofSerial serial;
 		ofBuffer serialReadBuffer;
-		//
+		
 		vector <ofSerialDeviceInfo> deviceList;
 
 		// store all of the received messages

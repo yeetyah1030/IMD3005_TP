@@ -27,8 +27,8 @@ void ofApp::setup() {
     // moodeng setup
     m_timer.setMoo(&m_moo);
 
-    m_happiness.setDecrease(0.1f);
-    m_hunger.setDecrease(0.2f);
+    m_happiness.setDecrease(0.08f);
+    m_hunger.setDecrease(0.1f);
     m_thirst.setDecrease(0.05f);
     m_background.load(TP::BACKGROUND_PATH);
 
